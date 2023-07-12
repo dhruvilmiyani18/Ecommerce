@@ -1,0 +1,69 @@
+<%- include('header') %>
+
+<div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">Checkout</h1>
+        <div class="d-inline-flex">
+            <p class="m-0"><a href="">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Checkout</p>
+        </div>
+    </div>
+</div>
+<!-- Page Header End -->
+
+
+<!-- Checkout Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-12 justify-content-center d-flex" >
+            <div class="mb-4">
+                <h4 class="font-weight-semi-bold mb-4">Register</h4>
+                <div class="row">
+                    <% if(flash.success && flash.success.length > 0) { %>
+                        <div class="alert alert-success">
+                            <%= flash.success %>
+                          </div>
+                    <% } %>
+                    <% if(flash.error && flash.error.length > 0) { %>
+                        <div class="alert alert-denger">
+                            <%= flash.error %>
+                          </div>
+                    <% } %>
+                    <form method="post" action="/user/insertRegisterData">
+                        <div class="col-md-12 form-group">
+                            <label>Enter name</label>
+                            <input class="form-control" type="text" placeholder="name" name="username">
+                        </div>
+                    
+
+                        <div class="col-md-12 form-group">
+                            <label>Enter Email</label>
+                            <input class="form-control" type="email" placeholder="email" name="email">
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <label>Enter Password</label>
+                            <input class="form-control" type="password" placeholder="password" name="password">
+                        </div>
+
+                        <div class="col-md-12 form-group">
+                            <label>Enter Confirm Password</label>
+                            <input class="form-control" type="password" placeholder="confirm password" name="cpassword">
+                        </div>
+                    
+                        <div class="col-md-12 form-group">
+                            <label></label>
+                            <input type="submit" value="Register" class="form-control btn-success" class="alert alert-success">
+                        </div>
+                    </form>
+                   
+                </div>
+            </div>
+          
+        </div>
+        
+    </div>
+</div>
+
+<%- include('footer') %>

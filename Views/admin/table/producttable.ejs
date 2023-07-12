@@ -1,0 +1,83 @@
+<%- include('../header') %>
+
+    <div class="main-container">
+        <div class="pd-ltr-20 xs-pd-20-10">
+
+            <!-- basic table  Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix mb-20">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Product Data Table</h4>
+
+                    </div>
+
+                </div>
+
+                <form class=" text-center" style="margin-bottom: 20px;">
+                    <input type="text" name="search">
+                    <input type="submit" class="btn-primary border-radius"  value="searching">
+            </form>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Category Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">OldPrice</th>
+                             
+                            <th scope="col">Image</th>
+                            <th scope="col">Create Date</th>
+                            <th scope="col">Active/Deactive</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for(var pd of record) { %>
+                            <tr>
+                                <td>
+                                    <%= pd.productname %>
+                                </td>
+                                <td>
+                                    <%= pd.productprice %>
+                                </td>
+                                <td>
+                                    <%= pd.OldPrice %>
+                                </td>
+                              
+
+                                <td><img src="<%= pd.singleImage %>" alt="" width="70px"></td>
+                                <td>
+                                    <%= pd.createdAt %>
+                                </td>
+                                <td>
+                                    <% if(pd.isActive){ %>
+                                        <a href="?active=<%= pd.id %>" class="btn-success p-3 rounded">Active</a>
+                                    <% } else { %>
+                                        <a href="?deactive=<%= pd.id %>" class="btn-danger p-3 rounded">DeActive</a>
+                                    <% } %>
+                                </td>
+                               <td>
+                                <a href="/product/productDelete/<%= pd.id %>" class="btn-danger p-3 rounded">Delete</a>
+                               </td>
+                                
+
+                            </tr>
+                            <% } %>
+
+                            <tr>
+                                <td>
+                                  <% for(var i=1; i<=totalPage; i++){ %>
+                                    <a href="?page=<%= i %>&search=<%= searchData %>"><%= i %></a>
+                                  <% } %>
+                                </td>
+                              </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <%- include('../footer') %>

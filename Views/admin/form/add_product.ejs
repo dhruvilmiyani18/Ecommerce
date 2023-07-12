@@ -1,0 +1,125 @@
+<%- include('../header') %>
+    <div class="main-container">
+        <div class="pd-20 card-box mb-30">
+            <% if(flash.success && flash.success.length > 0) { %>
+                <div class="alert alert-success">
+                    <%= flash.success %>hello3
+                  </div>
+            <% } %>
+
+            <form method="post" action="/product/productInsertData" enctype="multipart/form-data">
+
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Select Category</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="custom-select col-12" name="categoryId" id="categoryId"
+                            onchange="getSubcategoryData()">
+                            <option selected="">---Select Category---</option>
+                            <% for(var cd of categoryData){ %>
+                                <option value="<%= cd.id %>">
+                                    <%= cd.category %>
+                                </option>
+                                <% } %>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Select SubCategory</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="custom-select col-12" name="subcategoryId" id="subcategoryId"
+                            onchange="getExtraCategoryData()">
+                            <option selected="">--Select Subcategory--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Select ExtraCategory</label>
+                    <div class="col-sm-12 col-md-10">
+                        <select class="custom-select col-12" name="extracategoryId" id="extracategoryId"
+                            onchange="getTypeAndBrandData()">
+                            <option selected="">--Select Extracategory--</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="brandtypechenge">
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Select Type</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select class="custom-select col-12" name="typeId" id="typeId">
+                                <option selected="">--Select Type--</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Select Brand</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select class="custom-select col-12" name="brandId" id="brandId">
+                                <option selected="">--Select Brand--</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Enter Product Name</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" name="productname" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Enter Product Price</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" name="productprice" type="text" />
+                    </div>
+                </div>
+
+                
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Enter Product Old Price</label>
+                    <div class="col-sm-12 col-md-10">
+                        <input class="form-control" name="OldPrice" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-12 col-md-2 col-form-label">Enter Product Description :</label>
+                    <textarea class="form-control" name="description"></textarea>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Select Product Single Images :</label>
+                    <div class="custom-file col-sm-12 col-md-10">
+                        <input type="file" name="singleImage" class="custom-file-input form-control" />
+                        <label class="custom-file-label">Choose file</label>
+                    </div>
+                </div>
+
+                
+                <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">Select Product Multiple Images :</label>
+                    <div class="custom-file col-sm-12 col-md-10">
+                        <input type="file" name="multipleImage" multiple class="custom-file-input form-control" />
+                        <label class="custom-file-label">Choose file</label>
+                    </div>
+                </div>
+
+
+                
+
+
+                <div class="form-group ">
+                    <input type="submit" name="submit" id="" class="btn btn-success mt-4">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+
+    <%- include('../footer') %>

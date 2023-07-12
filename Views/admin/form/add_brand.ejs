@@ -1,0 +1,56 @@
+<%- include('../header') %>
+<div class="main-container">
+    <div class="pd-20 card-box mb-30">
+
+        <form method="post" action="/brand/insertBrand">
+            
+           
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Select Category</label>
+                <div class="col-sm-12 col-md-10">
+                    <select class="custom-select col-12" name="categoryId" id="categoryId" onchange="getSubcategoryData()">
+                        <option selected="">---Select Category---</option>
+                        <% for(var cd of categoryData){ %>
+                            <option value="<%= cd.id %>">
+                                <%= cd.category %>
+                            </option>
+                            <% } %> 
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Select SubCategory</label>
+                <div class="col-sm-12 col-md-10">
+                    <select class="custom-select col-12" name="subcategoryId" id="subcategoryId" onchange="getExtraCategoryData()">
+                        <option selected="">--Select Subcategory--</option>               
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Select ExtraCategory</label>
+                <div class="col-sm-12 col-md-10">
+                    <select class="custom-select col-12" name="extracategoryId" id="extracategoryId">
+                        <option selected="">--Select Extracategory--</option>               
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label class="col-sm-12 col-md-2 col-form-label">Enter Brand</label>
+                <div class="col-sm-12 col-md-10">
+                    <input class="form-control" name="brandname" type="text" />
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <input type="submit" name="submit" id="" class="btn btn-success mt-4">
+            </div>
+           
+        </form>
+    </div>
+</div>
+
+
+    <%- include('../footer') %>
